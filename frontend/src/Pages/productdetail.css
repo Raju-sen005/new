@@ -1,0 +1,79 @@
+/* Main carousel styles */
+.main-carousel,
+.thumbnail-carousel {
+  width: 100%;
+  max-width: 600px;
+}
+
+.main-carousel .slick-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.thumbnail-carousel .slick-slide img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumbnail-carousel .slick-current img {
+  border: 2px solid #FECDD3;
+}
+
+/* Arrow styles */
+.slick-prev:before,
+.slick-next:before {
+  color: #000;
+  font-size: 24px;
+}
+
+.slick-prev {
+  left: -30px;
+}
+
+.slick-next {
+  right: -30px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .product-section {
+    padding: 0.5rem;
+  }
+  
+  .main-carousel .slick-slide img {
+    max-height: 300px;
+  }
+  
+  .thumbnail-carousel .slick-slide img {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Better spacing for selection options */
+  .material-btn, .gemstone-btn {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Stack elements vertically on mobile */
+  .flex-col-mobile {
+    flex-direction: column;
+  }
+  
+  /* Full width for inputs on mobile */
+  .w-full-mobile {
+    width: 100% !important;
+  }
+}
+
+/* Color variables */
+:root {
+  --primary-color: #AA8265;
+  --secondary-color: #5B3E38;
+  --background-light: #F6F4F0;
+  --background-medium: #E9E2D8;
+}

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jewelry Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+     .gagrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+     
+      padding: 1rem;
+      border-radius: 0 0 0.5rem 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+    }
+
+    .gagrid > div {
+      display: flex;
+      align-items: center;
+      border: solid 1px #f1f1f1;
+      padding: 0.4rem 0.5rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.2s;
+    }
+
+    .gagrid > div:hover {
+      background-color: #f1f1f1;
+    }
+
+    .gagrid img {border-radius: 5px;
+      width: 52px;
+      height: 42px;
+      object-fit: cover;
+      margin-right: 0.5rem;
+    }
+
+    .gagrid .content {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .gagrid span.gacategory-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .mpl{
+      font-size: 11px !important;
+    }
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4 max-w-[400px]">
+    <!-- SHOP BY CATEGORY HEADER -->
+    <div class="bg-white p-4 border-b-2 rounded-t-lg" id="categoryHeader"
+      onclick="toggleDropdown('categoryDropdown', 'categoryArrow', 'categoryHeader')">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold cursor-pointer">Shop by Category</h2>
+        <button class="flex items-center">
+          <svg class="w-4 h-4 transition-transform duration-300" id="categoryArrow" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- CATEGORY DROPDOWN SECTION -->
+
+      <!-- Category Items -->
+      <div id="categoryDropdown" class="gagrid grid grid-cols-2 gap-4 bg-white p-4 rounded-b-lg shadow hidden">
+        <!-- Category Items -->
+        <div class="flex items-center ">
+          <img src="images/Ring.jpg" alt="Rings" class="">
+          <div class="content">
+            <span class="gacategory-text" id="dropdownButtonRings">Rings</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Earring.jpg" alt="Earrings" class="">
+          <div class="content">
+            <span class="gacategory-text" id="dropdownButtonEarrings">Earring</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Necklace.jpg" alt="Necklaces and Pendants" class="">
+          <div class="content">
+            <span class="gacategory-text mpl" id="dropdownButtonNecklaces">Necklace and Pendant</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Bracelet.jpg" alt="Bracelets" class="">
+          <div class="content">
+            <span class="gacategory-text" id="dropdownButtonBracelets">Bracelet</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Watch Jewelry.jpg" alt="Watch Jewelry" class="">
+          <div class="content">
+            <span class="gacategory-text">Watch Jewelry</span>
+          </div>
+           <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+                <i class="bi bi-chevron-right"></i>
+              </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Ring Enhancer.jpg" alt="Ring Enhancer" class="">
+          <div class="content">
+            <span class="gacategory-text">Ring Enhancer</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Anklets & nosepins.jfif" alt="Anklets & Nosepins" class="">
+          <div class="content">
+            <span class="gacategory-text">Anklets & Nosepins</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <img src="images/Anklets & nosepins.jfif" alt="Shop All" class=" ">
+          <div class="content">
+            <span class="gacategory-text lowercase">Shop All</span>
+          </div>
+          <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi  bi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
+  
+
+    <!-- SHOP BY THEME HEADER -->
+    <div class="bg-white p-4 border-b-2" id="themeHeader"
+      onclick="toggleDropdown('themeDropdown', 'themeArrow', 'themeHeader')">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold cursor-pointer">Shop by Theme</h2>
+        <button class="flex items-center">
+          <svg class="w-4 h-4 transition-transform duration-300" id="themeArrow" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- THEME DROPDOWN SECTION -->
+    <div id="themeDropdown" class="gagrid grid grid-cols-2 gap-4 bg-white p-4 rounded-b-lg shadow hidden">
+      <!-- Category Items -->
+      <div class="flex items-center ">
+        <img src="images/Nature Inspired.jpg" alt="Nature Inspired" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800" id="dropdownButtonNature">Nature Inspired</span>
+        </div>
+        <div class="w-4 h-4 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+          <i class="bi bi-chevron-right "></i>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <img src="images/Gothic & Occult.jpg" alt="Gothic & Occult" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800" >Gothic & Occult</span>
+        </div>
+        
+      </div>
+      <div class="flex items-center">
+        <img src="images/Zodiac & Birthstone.jpg" alt="Zodiac & Birthstone" class="">
+        <div class="content">
+          <span class="gacategory-text mpl text-pink-800"><a href="">Zodiac & Birthston</a></span>
+        </div>
+       
+      </div>
+      <div class="flex items-center">
+        <img src="images/Celestial & Astronomical.jpg" alt="Celestial and Astronomical" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800" >Celestial and Astronomical</span>
+        </div>
+       
+      </div>
+      <div class="flex items-center">
+        <img src="images/Celtic & Norse Mythology.jfif" alt="Celtic & Norse Mythological" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800">Celtic & Norse Mythological</span>
+        </div>
+        
+      </div>
+      <div class="flex items-center">
+        <img src="images/Religious & Spiritual.jpg" alt="Religous and Spiritual" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800">Religous and Spiritual</span>
+        </div>
+        
+      </div>
+      <div class="flex items-center">
+        <img src="images/Evil Eye & Amulets.jpg" alt="Evil Eye & Amulets" class="">
+        <div class="content">
+          <span class="gacategory-text text-pink-800">Evil Eye & Amulets</span>
+        </div>
+       
+      </div>
+      <div class="flex items-center">
+        <img src="images/Ocean & Beach.jpg" alt="Ocean & Beach Inspired" class=" ">
+        <div class="content">
+          <span class="gacategory-text lowercase text-pink-800">Ocean & Beach Inspired</span>
+        </div>
+        
+      </div>
+      <div class="flex items-center">
+        <img src="images/Geometric & Abstract.jfif" alt="Geometric & Abstract" class=" ">
+        <div class="content">
+          <span class="gacategory-text lowercase text-pink-800">Geometric & Abstract</span>
+        </div>
+        
+      </div>
+      <div class="flex items-center">
+        <img src="images/Alchemy & Science.jpg" alt="Alchemy & Science" class=" ">
+        <div class="content">
+          <span class="gacategory-text lowercase text-pink-800">Alchemy & Science</span>
+        </div>
+      
+      </div>
+    </div>
+
+    <!-- JEWELRY FOR HEADER -->
+    <div class="bg-white p-4 border-b-2" id="jewelryForHeader"
+      onclick="toggleDropdown('jewelryForDropdown', 'jewelryForArrow', 'jewelryForHeader')">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold cursor-pointer">Jewelry For</h2>
+        <button class="flex items-center">
+          <svg class="w-4 h-4 transition-transform duration-300" id="jewelryForArrow" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- JEWELRY FOR DROPDOWN SECTION -->
+    <div id="jewelryForDropdown" class="grid grid-cols-2 gap-4 bg-white p-4 rounded-b-lg shadow hidden">
+      <!-- Jewelry For Items -->
+      
+    </div>
+
+    <!-- CUSTOM JEWELRY HEADER -->
+    <div class="bg-white p-4 border-b-2" id="customJewelryHeader"
+      onclick="toggleDropdown('customJewelryDropdown', 'customJewelryArrow', 'customJewelryHeader')">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold cursor-pointer">Custom Jewelry
+        </h2>
+        <button class="flex items-center">
+          <svg class="w-4 h-4 transition-transform duration-300" id="customJewelryArrow" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- CUSTOM JEWELRY DROPDOWN SECTION -->
+    <div id="customJewelryDropdown" class="grid grid-cols-2 gap-4 bg-white p-4 rounded-b-lg shadow hidden">
+      <!-- Custom Jewelry Items -->
+      
+    </div>
+
+    <!-- MORE BY VINSTON DESIGNS HEADER -->
+    <div class="bg-white p-4 border-b-2" id="vinstonHeader"
+      onclick="toggleDropdown('vinstonDropdown', 'vinstonArrow', 'vinstonHeader')">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold cursor-pointer">More By Vinston Designs</h2>
+        <button class="flex items-center">
+          <svg class="w-4 h-4 transition-transform duration-300" id="vinstonArrow" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- MORE BY VINSTON DESIGNS DROPDOWN SECTION -->
+    <div id="vinstonDropdown" class="grid grid-cols-2 gap-4 bg-white p-4 rounded-b-lg shadow hidden">
+      <!-- Vinston Designs Items -->
+      
+    </div>
+    <!-- GUEST USER SECTION -->
+    <div class="bg-pink-100 py-2 px-4 rounded-lg flex items-center">
+      <div class="flex items-center">
+        <span class="mr-2 rounded-full bg-white w-16 h-16 flex items-center justify-center">
+          <i class="bi text-pink-500 bi-person-fill text-3xl"></i>
+        </span>
+      </div>
+      <div class="flex gap-4">
+        <div class="grid ">
+          <span class="text-[18px] font-semibold">Guest User</span>
+          <button class="text-pink-500">Tap to Login/Sign up </button>
+        </div>
+      <div class="flex items-end ">
+        <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+          <i class="bi bi-chevron-right"></i>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+    <!-- Rings Dropdown (Original) -->
+    <div class="max-w-[340px] mx-auto p-4 my-4 absolute top-[120px] left-[570px]">
+
+      <div id="dropdownMenuRings"
+        class="dropdown-menu absolute z-10 w-[340px] bg-pink-100 p-4 shadow-lg mt-2 rounded-lg">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-2xl font-semibold text-black">All Rings</span>
+          <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Purpose</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Office Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Daily Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Party Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Traditional Wear</li>
+              </ul>
+            </div>
+            <div class="mt-24">
+              <h2 class="text-md font-semibold mb-4">Shop By Gemstone</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Amethyst</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Alexandrite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Aquamarine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Garnet</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Diamond</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Emerald</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Sapphire</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tanzanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Citrine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moonstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Turquoise</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Black Onyx</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moss Agate</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Blue Sandstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Pearl</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Topaz</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tourmaline</li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Type</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Solitaire</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Halo</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Eternity Bands</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Toi Et Moi</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">3 Stone Ring</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Statement Ring</li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold italic mb-4">Shop By Theme</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Nature Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Gothic & Occult</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Zodiac & Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Ocean & Beach Inspired
+                </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Celestial & Astronomical
+                </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Celtic & Norse Mythology
+                </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Religious and Spiritual
+                </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Evil Eye & Amulets</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Geometric & Abstract</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Alchemy and Science</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Necklaces Dropdown -->
+    <div class="max-w-[380px] mx-auto p-4 my-4  absolute top-[200px] left-[570px]">
+
+      <div id="dropdownMenuNecklaces"
+        class="dropdown-menu absolute z-10 w-[340px] bg-pink-100 p-4 shadow-lg mt-2 rounded-lg">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-2xl font-semibold text-black">All Necklaces</span>
+          <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Purpose</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Office Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Daily Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Party Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Traditional Wear</li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <h2 class="text-md font-semibold mb-4">Shop By  Gemstone</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Amethyst</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Alexandrite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Aquamarine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Garnet</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Diamond</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moissanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Emerald</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Sapphire</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tanzanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Citrine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moonstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Opal</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Labradorite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Black Onyx</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moss Agate</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Turquoise</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Blue Sandstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Pearl</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Topaz</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tourmaline </li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Type</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Choker</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Charm</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Tassel</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Layered</li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="text-l font-bold italic mb-4">Shop By Theme</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Nature Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Gothic & Occult</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Zodiac & Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Ocean & Beach Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Celestial & Astronomical</li>
+
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Celtic & Norse Mythology </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Religious and Spiritual</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Evil Eye & Amulets</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Geometric & Abstract</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Alchemy and Science</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bracelets Dropdown -->
+    <div class="max-w-[380px] mx-auto p-4 my-4  absolute top-[200px] left-[580px]">
+
+      <div id="dropdownMenuBracelets"
+        class="dropdown-menu absolute z-10 w-[340px] bg-pink-100 p-4 shadow-lg mt-2 rounded-lg">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-2xl font-semibold text-black">All Bracelets</span>
+          <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Purpose</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Office Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Daily Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Party Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Traditional Wear</li>
+              </ul>
+            </div>
+            <div class="mt-24">
+              <h2 class="text-md font-semibold mb-4">Shop By Gemstone</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Amethyst</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Alexandrite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Aquamarine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Garnet</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Diamond</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moissanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Emerald</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Sapphire</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tanzanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Citrine</li>
+
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moonstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Opal</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Labradorite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Black Onyx</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moss Agate</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Turquoise</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Blue Sandstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Pearl</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Topaz</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tourmaline
+
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Type</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Charm</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Tennis </li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Bangle</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Beaded</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Chain</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Open Bangle </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="text-lg font-bold italic mb-4">Shop By Theme</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Nature Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Gothic & Occult</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Zodiac & Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Ocean & Beach Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Celestial & Astronomical</li>
+
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Celtic & Norse Mythology </li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Religious and Spiritual</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Evil Eye & Amulets</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Geometric & Abstract</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold font-[12px]">Alchemy and Science</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Earrings Dropdown -->
+    <div class="max-w-[380px] mx-auto p-4 my-4  absolute top-[120px] left-[570px]">
+      <div id="dropdownMenuEarrings"
+        class="dropdown-menu absolute z-10 w-[340px] bg-pink-100 p-4 shadow-lg mt-2 rounded-lg">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-2xl font-semibold text-black">All Earrings</span>
+          <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Purpose</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Office Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Daily Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Party Wear</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Traditional Wear
+
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <h2 class="text-md font-semibold mb-4">Shop By Gemstone</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Amethyst</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Alexandrite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Aquamarine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Garnet</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Diamond</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moissanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Emerald</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Sapphire</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tanzanite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Citrine</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moonstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Opal</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Labradorite</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Black Onyx</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Moss Agate</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Turquoise</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Blue Sandstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Pearl</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Topaz</li>
+                <li class="hover:text-blue-600 cursor-pointer underline text-[13px]">Tourmaline
+
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <h2 class="text-md font-semibold mb-4">Shop By Type</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Studs & Tops</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Dangler & Drop</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Huggies & Hoops</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Ear Climber</li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="text-lg font-bold italic mb-4">Shop By Theme</h2>
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold"> Nature Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Gothic & Occult</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Zodiac & Birthstone</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Ocean & Beach Inspired</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Celestial & Astronomical</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold"> Celtic & Norse Mythology</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Religious and Spiritual</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Evil Eye & Amulets</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Geometric & Abstract</li>
+                <li class="hover:text-blue-600 cursor-pointer underline italic font-semibold">Alchemy and Science</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-[380px] mx-auto p-4 my-4  absolute top-[180px] left-[570px]">
+      <div id="dropdownMenuNature"
+        class="dropdown-menu absolute z-10 w-[340px] bg-pink-100 p-4 shadow-lg mt-2 rounded-lg">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-2xl font-semibold text-black">Elements of The Earth</span>
+          <div class="w-6 h-6 bg-pink-400 rounded-full flex items-center justify-center text-white text-sm">
+            <i class="bi bi-chevron-right"></i>
+          </div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="w-full md:w-1/2">
+            <div class="mb-6">
+              <ul class="">
+                <li class="hover:text-blue-600 cursor-pointer underline">Floral & Botanical</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Animal Totems</li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Insect & Wildlife </li>
+                <li class="hover:text-blue-600 cursor-pointer underline">Birds & Wings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // Function to handle dropdown toggle and outside click
+    function setupDropdown(buttonId, menuId) {
+      const button = document.getElementById(buttonId);
+      const menu = document.getElementById(menuId);
+      button.addEventListener('click', () => {
+        menu.classList.toggle('show');
+      });
+      document.addEventListener('click', (event) => {
+        if (!button.contains(event.target) && !menu.contains(event.target)) {
+          menu.classList.remove('show');
+        }
+      });
+    }
+    // Initialize each dropdown
+    setupDropdown('dropdownButtonRings', 'dropdownMenuRings');
+    setupDropdown('dropdownButtonNecklaces', 'dropdownMenuNecklaces');
+    setupDropdown('dropdownButtonBracelets', 'dropdownMenuBracelets');
+    setupDropdown('dropdownButtonEarrings', 'dropdownMenuEarrings');
+    setupDropdown('dropdownButtonNature', 'dropdownMenuNature')
+  </script>
+
+
+  <!-- SCRIPTS -->
+  <script>
+    function toggleDropdown(dropdownId, arrowId, headerId) {
+      const dropdown = document.getElementById(dropdownId);
+      const arrow = document.getElementById(arrowId);
+      const header = document.getElementById(headerId);
+      const headerText = header.querySelector('h2');
+      dropdown.classList.toggle('hidden');
+      arrow.classList.toggle('rotate-180');
+      header.classList.toggle('bg-pink-200'); // Toggle pink background
+      headerText.classList.toggle('text-pink-500'); // Toggle pink text color
+    }
+  </script>
+</body>
+
+</html>
