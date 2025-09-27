@@ -6,7 +6,7 @@ services:
     image: mysql:8.0
     container_name: mysql-db
     ports:
-      - "3306:3306"  # This is still fine for external access
+      - "3307:3306"  # This is still fine for external access
     environment:
       MYSQL_ROOT_PASSWORD: root # TODO: Need to put this into env file
       MYSQL_PASSWORD: root # TODO: Need to put this into env file
