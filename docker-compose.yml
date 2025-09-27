@@ -9,7 +9,9 @@ services:
       - "3306:3306"  # This is still fine for external access
     environment:
       MYSQL_ROOT_PASSWORD: root # TODO: Need to put this into env file
-      MYSQL_DATABASE: mydb
+      MYSQL_PASSWORD: root # TODO: Need to put this into env file
+      MYSQL_USER: root
+      MYSQL_DATABASE: jewellerydb
     volumes:
       - db_data:/var/lib/mysql
     restart: always
