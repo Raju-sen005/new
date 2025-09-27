@@ -32,7 +32,7 @@ services:
       DB_PASSWORD: root
       DB_NAME: jewellerydb
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - db
     networks:
