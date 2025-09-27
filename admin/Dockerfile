@@ -39,6 +39,7 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Build the application for production
 RUN npm run build
