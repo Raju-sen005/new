@@ -28,7 +28,7 @@
 
 # --- Stage 1: Build the React Application ---
 
-FROM node:20-alpine as builder
+FROM node:20-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -56,4 +56,4 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Expose port 80, handled by Nginx
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
