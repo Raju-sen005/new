@@ -28,9 +28,9 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 3306
-      DB_USER: myuser
-      DB_PASSWORD: mypassword
-      DB_NAME: my_project_db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: jewellerydb
     ports:
       - "3000:3000"
     depends_on:
