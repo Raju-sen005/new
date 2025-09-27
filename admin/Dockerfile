@@ -50,7 +50,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the build output from the builder stage to the Nginx content directory
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80, handled by Nginx
 EXPOSE 80
