@@ -4,7 +4,7 @@ services:
   # 1. MySQL Database Service
   db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: db
     ports:
       - "3307:3306"  # This is still fine for external access
     environment:
