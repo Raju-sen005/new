@@ -39,16 +39,17 @@ RUN npm install
 
 # Copy the rest of the application code
 COPY . .
-COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Build the application for production
 RUN npm run build
 
 # --- Stage 2: Serve with Nginx ---
-FROM nginx:alpine
-
+  FROM nginx:alpine
+  
 # Remove default Nginx static content
 RUN rm -rf /usr/share/nginx/html/*
+
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Copy the build output from the builder stage to the Nginx content directory
 COPY --from=builder /app/dist /usr/share/nginx/html
