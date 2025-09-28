@@ -13,28 +13,35 @@ const cron = require("node-cron");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
+
+
 // Middleware setup
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
+
+const apiRouter = express.Router();
+
 app.use("/uploads", express.static("uploads"));
 
 // API routes
-app.use("/products", require("./products/product.controller.js"));
-app.use("/contact", require("./contact/contact.controller.js"));
-app.use("/category", require("./category/category.controller.js"));
-app.use("/subcategory", require("./subcategory/subcategory.controller.js"));
-app.use("/theme", require("./theme/subcategory.controller.js"));
-app.use("/purpose", require("./purpose/subcategory.controller.js"));
-app.use("/gemstone", require("./gemstone/subcategory.controller.js"));
-app.use("/festival", require("./festival/subcategory.controller.js"));
-app.use("/material", require("./material/subcategory.controller.js"));
-app.use("/size", require("./sizes/subcategory.controller.js"));
-app.use("/orders", require("./orders/orders.controller.js"));
-app.use("/", require("./accounts/accounts.controller.js"));
-app.use("/api-docs", require("./_helpers/swagger.js"));
-app.use("/api/products", require("./products/product.controller.js"));
+apiRouter.use("/products", require("./products/product.controller.js"));
+apiRouter.use("/contact", require("./contact/contact.controller.js"));
+apiRouter.use("/category", require("./category/category.controller.js"));
+apiRouter.use("/subcategory", require("./subcategory/subcategory.controller.js"));
+apiRouter.use("/theme", require("./theme/subcategory.controller.js"));
+apiRouter.use("/purpose", require("./purpose/subcategory.controller.js"));
+apiRouter.use("/gemstone", require("./gemstone/subcategory.controller.js"));
+apiRouter.use("/festival", require("./festival/subcategory.controller.js"));
+apiRouter.use("/material", require("./material/subcategory.controller.js"));
+apiRouter.use("/size", require("./sizes/subcategory.controller.js"));
+apiRouter.use("/orders", require("./orders/orders.controller.js"));
+apiRouter.use("/", require("./accounts/accounts.controller.js"));
+apiRouter.use("/api-docs", require("./_helpers/swagger.js"));
+// apiRouter.use("/products", require("./products/product.controller.js"));
+
+app.use("/api", apiRouter);
 
 // Global error handler
 app.use(errorHandler);
