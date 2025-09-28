@@ -46,11 +46,15 @@ services:
     container_name: frontend_app
     restart: always
     ports:
-      - "80:80" # http://localhost:8080
+      - "8080:80" # http://localhost:8080
     depends_on:
       - server
     networks:
       - app-network
+    environment:
+      - VIRTUAL_HOST=vinstondesigns.com
+      - LETSENCRYPT_HOST=vinstondesigns.com
+      - LETSENCRYPT_EMAIL=vinstondesigns@gmail.com
 
   # 4. Admin React App Service (served by Nginx)
   admin:
@@ -63,6 +67,41 @@ services:
       - "8081:80" # http://localhost:8081
     depends_on:
       - server
+    networks:
+      - app-network
+    environment:
+      - VIRTUAL_HOST=admin.vinstondesigns.com
+      - LETSENCRYPT_HOST=admin.vinstondesigns.com
+      - LETSENCRYPT_EMAIL=vinstondesigns@gmail.com
+
+  # 5. Reverse Proxy (nginx-proxy)
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+    networks:
+      - app-network
+
+  # 6. Let's Encrypt SSL Companion
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt
+    restart: always
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
     networks:
       - app-network
 
