@@ -10,7 +10,7 @@ const CategoryProducts = () => {
   useEffect(() => {
     if (!categoryName) return;
 
-    fetch(`http://localhost:8000/products/category/${categoryName}`)
+    fetch(`${API_BASE_URL}/products/category/${categoryName}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {

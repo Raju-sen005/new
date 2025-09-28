@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from '../lib'
 
 const ShopByThemeDropdown = () => {
     const [categories, setCategories] = useState([]);
@@ -17,8 +18,8 @@ const ShopByThemeDropdown = () => {
     const fetchData = async () => {
         try {
             const [categoriesRes, themesRes] = await Promise.all([
-                fetch("http://localhost:8000/category"),
-                fetch("http://localhost:8000/theme")
+                fetch(`${API_BASE_URL}/category`),
+                fetch(`${API_BASE_URL}/theme`)
             ]);
             setCategories(await categoriesRes.json());
             setThemes(await themesRes.json());
@@ -30,10 +31,10 @@ const ShopByThemeDropdown = () => {
     const fetchCategoryDetails = async (categoryId) => {
         try {
             const [purposeRes, typeRes, themeRes, gemstoneRes] = await Promise.all([
-                fetch(`http://localhost:8000/purpose?categoryId=${categoryId}`),
-                fetch(`http://localhost:8000/subcategory/?categoryId=${categoryId}`),
-                fetch(`http://localhost:8000/theme/?categoryId=${categoryId}`),
-                fetch(`http://localhost:8000/gemstone?categoryId=${categoryId}`)
+                fetch(`${API_BASE_URL}/purpose?categoryId=${categoryId}`),
+                fetch(`${API_BASE_URL}/subcategory/?categoryId=${categoryId}`),
+                fetch(`${API_BASE_URL}/theme/?categoryId=${categoryId}`),
+                fetch(`${API_BASE_URL}/gemstone?categoryId=${categoryId}`)
             ]);
             setPurposes(await purposeRes.json());
             setTypes(await typeRes.json());

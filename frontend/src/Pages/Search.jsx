@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import axios from 'axios';
+import { API_BASE_URL } from '../lib'
 
 const Search = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Search = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/products");
+        const res = await axios.get(`${API_BASE_URL}/products`);
         console.log("Products fetched:", res.data);
         setProducts(res.data);
       } catch (error) {
@@ -73,7 +74,7 @@ const Search = () => {
                       <img
                         alt={variant?.title || "Product Image"}
                         className="h-full w-full block bg-[#E9E2D8]"
-                        src={`http://localhost:8000/uploads/${JSON.parse(variant?.images || '[]')[0]}`} // image path fix
+                        src={`${API_BASE_URL}/uploads/${JSON.parse(variant?.images || '[]')[0]}`} // image path fix
                       />
                     </Link>
                     <div className="mt-4">

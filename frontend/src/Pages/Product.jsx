@@ -6,6 +6,7 @@ import axios from "axios";
 import { useCart } from "../CartContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { API_BASE_URL } from '../lib'
 
 const Product = () => {
   const { id } = useParams();
@@ -32,7 +33,7 @@ const Product = () => {
   // Fetch Sizes
   useEffect(() => {
     axios
-      .get("http://localhost:8000/size")
+      .get(`${API_BASE_URL}/size`)
       .then((res) => setSizes(res.data))
       .catch((err) => console.error("Error fetching sizes:", err));
   }, []);
@@ -40,7 +41,7 @@ const Product = () => {
   // Fetch Metals
   useEffect(() => {
     axios
-      .get("http://localhost:8000/material")
+      .get(`${API_BASE_URL}/material`)
       .then((res) => setMetals(res.data))
       .catch((err) => console.error("Error fetching metals:", err));
   }, []);
@@ -48,7 +49,7 @@ const Product = () => {
   // Fetch Gemstones
   useEffect(() => {
     axios
-      .get("http://localhost:8000/gemstone")
+      .get(`${API_BASE_URL}/gemstone`)
       .then((res) => setGemstones(res.data))
       .catch((err) => console.error("Error fetching gemstones:", err));
   }, []);
@@ -57,7 +58,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/products/${id}`);
+        const response = await fetch(`${API_BASE_URL}/products/${id}`);
         const data = await response.json();
 
         // Safe parsing for ProductVariants[0]
@@ -134,7 +135,7 @@ const Product = () => {
               {images?.map((img, index) => (
                 <div key={index} className="flex justify-center">
                   <img
-                    src={`http://localhost:8000/uploads/${img}`}
+                    src={`${API_BASE_URL}/uploads/${img}`}
                     alt={`Product ${index}`}
                     className="w-full h-[500px] object-cover rounded-lg "
                   />
@@ -148,7 +149,7 @@ const Product = () => {
                 {images?.map((img, index) => (
                   <div key={index} className="px-1 flex justify-center">
                     <img
-                      src={`http://localhost:8000/uploads/${img}`}
+                      src={`${API_BASE_URL}/uploads/${img}`}
                       alt={`Thumb ${index}`}
                       onClick={() => mainSlider.current.slickGoTo(index)}
                       className={`w-28 h-28 object-cover cursor-pointer border-2 rounded transition-all duration-200 ${

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from '../lib'
 
 const CategoryDetailPage = () => {
   const location = useLocation();
@@ -14,7 +15,7 @@ const CategoryDetailPage = () => {
     if (category) {
       axios
         .get(
-          `http://localhost:8000/api/products/category/${category.category.toLowerCase()}`
+          `${API_BASE_URL}/api/products/category/${category.category.toLowerCase()}`
         )
         .then((res) => {
           setProducts(res.data);
@@ -46,7 +47,7 @@ const CategoryDetailPage = () => {
         {products.map((product) => {
           const variant = product.ProductVariants?.[0] || {};
           const productImage = variant.images
-            ? `http://localhost:8000/uploads/${JSON.parse(variant.images)[0]}`
+            ? `${API_BASE_URL}/uploads/${JSON.parse(variant.images)[0]}`
             : "/placeholder.jpg";
 
           const productPrice = variant.price || product.price || 0;

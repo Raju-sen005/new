@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductTabs from "./ProductTabs";
+import { API_BASE_URL } from '../lib'
 
 const ProductDetail = () => {
   const { state } = useLocation();
@@ -38,7 +39,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchSizes = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/size");
+        const response = await axios.get(`${API_BASE_URL}/size`);
         setSizes(response.data);
       } catch (error) {
         console.error("Error fetching sizes:", error);
@@ -51,7 +52,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchMetals = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/material");
+        const response = await axios.get(`${API_BASE_URL}/material`);
         setMetals(response.data);
       } catch (error) {
         console.error("Error fetching metals:", error);
@@ -64,7 +65,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchGemstones = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/gemstone");
+        const res = await axios.get(`${API_BASE_URL}/gemstone`);
         setGemstones(res.data);
       } catch (err) {
         console.error("Error fetching gemstones:", err);

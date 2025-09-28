@@ -22,7 +22,7 @@ const ThemeProducts = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("http://localhost:8000/products");
+        const res = await fetch(`${API_BASE_URL}/products`);
         const data = await res.json();
 
         const products = Array.isArray(data) ? data : [data];
@@ -114,7 +114,7 @@ const normalized = allVariants.map((v) => {
               {/* Product Image */}
               {item.image ? (
                 <img
-                  src={`http://localhost:8000/uploads/${item.image}`}
+                  src={`${API_BASE_URL}/uploads/${item.image}`}
                   alt={item.title}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
                 />

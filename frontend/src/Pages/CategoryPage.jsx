@@ -9,7 +9,7 @@ const CategoryPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/category")
+      .get(`${API_BASE_URL}/category`)
       .then((res) => {
         setCategories(res.data);
         setLoading(false);
