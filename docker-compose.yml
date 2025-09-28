@@ -73,6 +73,7 @@ services:
       - VIRTUAL_HOST=admin.vinstondesigns.com
       - LETSENCRYPT_HOST=admin.vinstondesigns.com
       - LETSENCRYPT_EMAIL=vinstondesigns@gmail.com
+      - FORCE_SSL=true
 
   # 5. Reverse Proxy (nginx-proxy)
   nginx-proxy:
@@ -89,6 +90,8 @@ services:
       - ./html:/usr/share/nginx/html
     networks:
       - app-network
+    labels:
+      - "com.github.nginx-proxy.nginx=true"
 
   # 6. Let's Encrypt SSL Companion
   letsencrypt:
