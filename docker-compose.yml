@@ -45,8 +45,8 @@ services:
       dockerfile: Dockerfile
     container_name: frontend_app
     restart: always
-    ports:
-      - "8080:80" # http://localhost:8080
+    expose:
+      - "80"
     depends_on:
       - server
     networks:
@@ -63,8 +63,8 @@ services:
       dockerfile: Dockerfile
     container_name: admin_app
     restart: always
-    ports:
-      - "8081:80" # http://localhost:8081
+    expose:
+      - "80"  # only internal network
     depends_on:
       - server
     networks:
