@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 node_modules
 .env
 
 # Ignore uploaded files
 server/uploads/
 server/uploads/**
+=======
+node_modules/
+.env
+>>>>>>> d0bd68f264cf6afdede23774441409dc299d02df

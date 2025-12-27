@@ -9,6 +9,7 @@ const CartSummary = ({ selectedOption, handleTotal }) => {
 
     const [discountAmount] = useState(0);
 
+<<<<<<< HEAD
      const safeParseArray = (value) => {
         if (!value) return [];
         if (Array.isArray(value)) return value;
@@ -28,6 +29,8 @@ const CartSummary = ({ selectedOption, handleTotal }) => {
         const arr = safeParseArray(val);
         return arr.length > 0 ? arr[0] : "";
     };
+=======
+>>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
     const shippingData = {
         methods: [
             {
@@ -80,6 +83,7 @@ const CartSummary = ({ selectedOption, handleTotal }) => {
             <div className="space-y-8">
                 {groupedItems.map((item) => (
                     <div key={item.id} className="flex items-center space-x-4">
+<<<<<<< HEAD
                          <img
                             src={
                                 getFirst(item.images)
@@ -89,6 +93,9 @@ const CartSummary = ({ selectedOption, handleTotal }) => {
                             className="w-20 h-20 bg-white"
                             alt={item.title}
                         />
+=======
+                        <img src={url +"/uploads/" +item?.images[0]} className="w-20 h-20 bg-white" alt={item.title} />
+>>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
                         <div>
                             <p className="font-bold text-lg">${(item.price * item.quantity).toFixed(2)}</p>
                             <p className="text-sm text-gray-600">{item.title}</p>
@@ -125,4 +132,7 @@ const CartSummary = ({ selectedOption, handleTotal }) => {
 };
 
 export default CartSummary;
+<<<<<<< HEAD
  
+=======
+>>>>>>> d0bd68f264cf6afdede23774441409dc299d02df

@@ -139,12 +139,19 @@ const handleItemClick = (type, value) => {
                                                         <ul className="list-disc pl-5">
                                                             {themeOptions.map((t, i) => (
                                                                 <li key={i} className="cursor-pointer text-blue-600 hover:underline"
+<<<<<<< HEAD
                                                                     onClick={() => handleItemClick("theme", t.theme)}>
                                                                     {t.theme}
                                                                 </li>
                                                                 
                                                             ))}
                                                             
+=======
+                                                                    onClick={() => handleItemClick("theme", t.name)}>
+                                                                    {t.name}
+                                                                </li>
+                                                            ))}
+>>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
                                                         </ul>
                                                     </div>
                                                 )}
