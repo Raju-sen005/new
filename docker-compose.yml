@@ -1,0 +1,119 @@
+version: "3.8"
+
+services:
+  # 1. MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: db
+    ports:
+      - "3307:3306"  # This is still fine for external access
+    environment:
+      MYSQL_ROOT_PASSWORD: root # TODO: Need to put this into env file
+      # MYSQL_PASSWORD: root # TODO: Need to put this into env file
+      # MYSQL_USER: root
+      MYSQL_DATABASE: jewellerydb
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    networks:
+      - app-network
+
+  # 2. Node.js Server Service
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: node_server
+    restart: always
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: jewellerydb
+    ports:
+      - "8082:8000"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # 3. Frontend React App Service (served by Nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    restart: always
+    expose:
+      - "80"
+    depends_on:
+      - server
+    networks:
+      - app-network
+    environment:
+      - VIRTUAL_HOST=vinstondesigns.com
+      - LETSENCRYPT_HOST=vinstondesigns.com
+      - LETSENCRYPT_EMAIL=vinstondesigns@gmail.com
+
+  # 4. Admin React App Service (served by Nginx)
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: admin_app
+    restart: always
+    expose:
+      - "80"  # only internal network
+    depends_on:
+      - server
+    networks:
+      - app-network
+    environment:
+      - VIRTUAL_HOST=admin.vinstondesigns.com
+      - LETSENCRYPT_HOST=admin.vinstondesigns.com
+      - LETSENCRYPT_EMAIL=vinstondesigns@gmail.com
+      - FORCE_SSL=true
+
+  # 5. Reverse Proxy (nginx-proxy)
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+    networks:
+      - app-network
+    labels:
+      - "com.github.nginx-proxy.nginx=true"
+
+  # 6. Let's Encrypt SSL Companion
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: letsencrypt
+    restart: always
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./certs:/etc/nginx/certs
+      - ./vhost.d:/etc/nginx/vhost.d
+      - ./html:/usr/share/nginx/html
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
