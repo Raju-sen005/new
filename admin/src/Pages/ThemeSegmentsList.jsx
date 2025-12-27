@@ -121,11 +121,8 @@ function ThemeSegmentsList() {
                       <td className="p-4">{theme.theme}</td>
                       <td className="p-4">
                         <img
-<<<<<<< HEAD
                           src={`${baseURL.replace(/\/api$/, "")}/uploads/${
-=======
-                          src={`${baseURL.replace(/\/$/, "")}/uploads/${
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                             theme.image
                           }`}
                           alt="theme"

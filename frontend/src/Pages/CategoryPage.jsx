@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-<<<<<<< HEAD
+
 import { API_BASE_URL } from '../lib'
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
 
 const CategoryPage = () => {
   const [categories, setCategories] = useState([]);

@@ -6,11 +6,9 @@ import MultiSelectDropdown from "./MultiSelectDropdown";
 
 const ProductList = () => {
   const baseURL = import.meta.env.VITE_BACKEND_URL;
-<<<<<<< HEAD
   const iURL = import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "");
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   const [products, setProducts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   // const [formData, setFormData] = useState({ name: '', price: '', category: '', image: '', description: '' });
@@ -40,7 +38,6 @@ const ProductList = () => {
   const [metals, setMetals] = useState([]);
   const [sizes, setSizes] = useState([]);
   const [gemstone, setGemstone] = useState([]);
-<<<<<<< HEAD
   const safeParseArray = (value) => {
     if (!value) return [];
     if (Array.isArray(value)) return value;
@@ -55,8 +52,7 @@ const ProductList = () => {
     }
     return [];
   };
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
 
   useEffect(() => {
     async function fetchDropdowns() {
@@ -112,7 +108,6 @@ const ProductList = () => {
         description: editingProduct?.description || "",
         quantity: editingProduct?.quantity || "",
         images: [], // old images won't be pre-filled in file input
-<<<<<<< HEAD
         categories: safeParseArray(editingProduct?.categories || "[]"),
         subCategories: safeParseArray(editingProduct?.subCategories || "[]"),
         themes: safeParseArray(editingProduct?.themes || "[]"),
@@ -121,16 +116,7 @@ const ProductList = () => {
         sizes: safeParseArray(editingProduct?.sizes || "[]"),
         price: safeParseArray(editingProduct?.price || "[]"),
         metal: safeParseArray(editingProduct?.metal || "[]"),
-=======
-        categories: JSON.parse(editingProduct?.categories || "[]"),
-        subCategories: JSON.parse(editingProduct?.subCategories || "[]"),
-        themes: JSON.parse(editingProduct?.themes || "[]"),
-        purposes: JSON.parse(editingProduct?.purposes || "[]"),
-        festivals: JSON.parse(editingProduct?.festivals || "[]"),
-        sizes: JSON.parse(editingProduct?.sizes || "[]"),
-        price: JSON.parse(editingProduct?.price || "[]"),
-        metal: JSON.parse(editingProduct?.metal || "[]"),
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
       },
     ]);
   };
@@ -168,7 +154,7 @@ const ProductList = () => {
     // FormData
     const form = new FormData();
 
-<<<<<<< HEAD
+
     // Variants without images
     const variantsWithoutImages = variants.map((v) => {
       const { images, ...rest } = v;
@@ -182,21 +168,7 @@ const ProductList = () => {
         form.append(`variants[${idx}][images]`, file); // must match backend
       });
     });
-=======
-// Variants without images
-const variantsWithoutImages = variants.map((v) => {
-  const { images, ...rest } = v;
-  return rest;
-});
-form.append("variants", JSON.stringify(variantsWithoutImages));
 
-// Images with correct field names
-variants.forEach((v, idx) => {
-  v.images.forEach((file) => {
-    form.append(`variants[${idx}][images]`, file); // must match backend
-  });
-});
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
 
 
     try {
@@ -206,17 +178,13 @@ variants.forEach((v, idx) => {
       };
 
       if (editingProduct) {
-<<<<<<< HEAD
+
        await axios.put(
   `${baseURL}/products/${editingProduct.productId}`,
   form,
   { headers }
 );
-=======
-        await axios.put(`${baseURL}/products/${editingProduct.id}`, form, {
-          headers,
-        });
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
       } else {
         await axios.post(`${baseURL}/products`, form, { headers });
       }
@@ -264,7 +232,6 @@ variants.forEach((v, idx) => {
   }, []);
 
   // Set edit mode for a variant
-<<<<<<< HEAD
   // const handleEdit = (variant) => {
   //   setEditingProduct(variant);
 
@@ -344,52 +311,7 @@ variants.forEach((v, idx) => {
   fetchProducts();
 };
 
-=======
-  const handleEdit = (variant) => {
-    setEditingProduct(variant);
 
-    const editedVariant = {
-      title: variant.title || "",
-      gemstone: variant.gemstone || "",
-      description: variant.description || "",
-      // price: variant.price || '',
-      quantity: variant.quantity || "",
-      images: [], // old images won't be pre-filled in file input
-      categories: JSON.parse(variant.categories || "[]"),
-      subCategories: JSON.parse(variant.subCategories || "[]"),
-      themes: JSON.parse(variant.themes || "[]"),
-      purposes: JSON.parse(variant.purposes || "[]"),
-      festivals: JSON.parse(variant.festivals || "[]"),
-      sizes: JSON.parse(variant.sizes || "[]"),
-      price: JSON.parse(variant.price || "[]"),
-      metal: JSON.parse(variant.metal || "[]"),
-    };
-
-    setVariants([editedVariant]); // Overwrite with the variant to edit
-    setShowForm(true);
-  };
-
-  // Delete a variant
-  const handleDelete = async (variantId) => {
-    const token = JSON.parse(localStorage.getItem("user"))?.jwtToken;
-
-    if (!token) {
-      console.error("No token found");
-      return;
-    }
-
-    try {
-      await axios.delete(`${baseURL}/products/${variantId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      fetchProducts(); // Refresh list after deletion
-    } catch (err) {
-      console.error("Error deleting variant:", err);
-    }
-  };
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
 
   return (
     <>
@@ -697,7 +619,6 @@ variants.forEach((v, idx) => {
                         <td className="p-4">{variant.title}</td>
                         <td className="p-4">{variant.gemstone}</td>
                         <td className="p-4">
-<<<<<<< HEAD
                          {safeParseArray(variant.price || "[]").join(", ")}
                         </td>
                         <td className="p-4">
@@ -706,15 +627,7 @@ variants.forEach((v, idx) => {
                             if (subs.length > 3) {
                              return subs.slice(0, 3).join(", ") + ", ...";
 
-=======
-                          {JSON.parse(variant.price || "[]")}
-                        </td>
-                        <td className="p-4">
-                          {(() => {
-                            const subs = JSON.parse(variant.categories || "[]");
-                            if (subs.length > 3) {
-                              return subs.slice(0, 3) + ", ...";
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                             }
                             return subs.join(", ");
                           })()}
@@ -722,27 +635,19 @@ variants.forEach((v, idx) => {
 
                         <td className="p-4">
                           {(() => {
-<<<<<<< HEAD
                             const subs = safeParseArray(
                               variant.subCategories || "[]"
                             );
                             if (subs.length > 3) {
                             return subs.slice(0, 3).join(", ") + ", ...";
 
-=======
-                            const subs = JSON.parse(
-                              variant.subCategories || "[]"
-                            );
-                            if (subs.length > 3) {
-                              return subs.slice(0, 3) + ", ...";
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                             }
                             return subs.join(", ");
                           })()}
                         </td>
 
                         <td className="p-4 flex gap-2">
-<<<<<<< HEAD
                           {variant?.images?.map((img, i) => (
                             <img
                               key={i}
@@ -759,42 +664,19 @@ variants.forEach((v, idx) => {
                               className="text-blue-500 border px-2 py-1 rounded hover:bg-blue-100"
                               onClick={() => handleEdit(product, variant)}
 
-=======
-                          {/* {variant?.images?.map((img, i) => (
-                                                        <img
-                                                            key={i}
-                                                            src={`${baseURL}/uploads/${img}`}
-                                                            alt={`variant-${variant.id}-${i}`}
-                                                            className="w-12 h-12 object-cover rounded transition-transform duration-300 hover:scale-[2.5] z-50"
-                                                        />
-                                                    ))} */}
-                        </td>
 
-                        <td>
-                          <td className="p-4 flex gap-2">
-                            <button
-                              className="text-blue-500 border px-2 py-1 rounded hover:bg-blue-100"
-                              onClick={() => handleEdit(variant)}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
                             >
                               Edit
                             </button>
                             <button
                               className="text-red-500 border px-2 py-1 rounded hover:bg-red-100"
-<<<<<<< HEAD
                               onClick={() => handleDelete(product.id)}
 
                             >
                               Delete
                             </button>
                           </div>
-=======
-                              onClick={() => handleDelete(variant.id)}
-                            >
-                              Delete
-                            </button>
-                          </td>
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                         </td>
                       </tr>
                     ))
@@ -989,17 +871,11 @@ variants.forEach((v, idx) => {
                       <div key={field}>
                         <input
                           type="text"
-<<<<<<< HEAD
                           placeholder={`${field.charAt(0).toUpperCase() + field.slice(1)
                             } (comma separated)`}
                           value={safeParseArray(variant[field]).join(",")}
 
-=======
-                          placeholder={`${
-                            field.charAt(0).toUpperCase() + field.slice(1)
-                          } (comma separated)`}
-                          value={variant[field] ? variant[field].join(",") : ""}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                           onChange={(e) =>
                             handleVariantChange(
                               index,

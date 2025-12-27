@@ -18,11 +18,10 @@ const ProductGrid = ({ products }) => {
   const { addToWishlist } = useWishlist();
 
   const url = import.meta.env.VITE_BACKEND_URL;
-<<<<<<< HEAD
+
   const iurl = import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "");
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
 
   const parseJSON = (data) => {
     try {
@@ -92,11 +91,9 @@ const ProductGrid = ({ products }) => {
                 {images.slice(0, 5).map((img, index) => (
                   <SwiperSlide key={index}>
                     <img
-<<<<<<< HEAD
+
                       src={`${iurl}/uploads/${img}`}
-=======
-                      src={`${url}/uploads/${img}`}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                       alt={variant.title}
                       className="w-full h-full object-cover"
                     />
@@ -165,11 +162,9 @@ const ProductGrid = ({ products }) => {
               {parseJSON(selectedProduct.images).map((img, index) => (
                 <SwiperSlide key={index}>
                   <img
-<<<<<<< HEAD
+
                     src={`${iurl}/uploads/${img}`}
-=======
-                    src={`${url}/uploads/${img}`}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                     alt={`Image ${index + 1}`}
                     className="w-full h-80 object-cover rounded"
                   />

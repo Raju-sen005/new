@@ -5,10 +5,9 @@ import { useCart } from "../CartContext";
 import ShopByThemeDropdown from "./ShopByThemeDropdown";
 import UserProfileHover from "./UserProfile";
 import { API_BASE_URL } from '../lib'
-<<<<<<< HEAD
+
 import { IoIosArrowForward } from "react-icons/io";
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
 
 function Header({ searchTerm, setSearchTerm }) {
   const [categories, setCategories] = useState([]);
@@ -296,20 +295,15 @@ function Header({ searchTerm, setSearchTerm }) {
                                                   import.meta.env
                                                     .VITE_BACKEND_URL
                                                 }${cat.image}`
-<<<<<<< HEAD
                                                 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                                           }
                                           alt={cat.category}
                                           className="h-8 w-8 object-cover rounded"
                                         />
                                       )}
-<<<<<<< HEAD
                                       <span className="flex items-center gap-2 text-gray-800">{cat.category}<IoIosArrowForward className="bg-pink-500 text-white rounded-full w-5 h-5" /></span>
-=======
-                                      <span>{cat.category}</span>
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                                     </div>
 
                                     {expandedCategoryId === cat.id && (
@@ -375,19 +369,12 @@ function Header({ searchTerm, setSearchTerm }) {
                                                   onClick={() =>
                                                     handleItemClick(
                                                       "theme",
-<<<<<<< HEAD
                                                       t.theme
                                                     )
                                                   }
                                                 >
                                                   {t.theme}
-=======
-                                                      t.name
-                                                    )
-                                                  }
-                                                >
-                                                  {t.name}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                                                 </li>
                                               ))}
                                             </ul>
@@ -489,14 +476,8 @@ function Header({ searchTerm, setSearchTerm }) {
                                         src={
                                           theme.image.startsWith("http")
                                             ? theme.image
-<<<<<<< HEAD
                                             : `${import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "")}/uploads/${theme.image}`
-=======
-                                            : `${import.meta.env.VITE_BACKEND_URL.replace(
-                                                /\/$/,
-                                                ""
-                                              )}/uploads/${theme.image}`
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                                         }
                                         alt={theme.theme}
                                         className="h-8 w-8 object-cover rounded"

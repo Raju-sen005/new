@@ -8,12 +8,9 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-<<<<<<< HEAD
   const url = import.meta.env.VITE_BACKEND_URL;
   const iurl = import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "");
-=======
-  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
 
   // Helper to parse JSON safely
   const parseSafeArray = (data) => {
@@ -47,11 +44,8 @@ const ProductList = () => {
             metal: parseSafeArray(variant.metal),
             sizes: parseSafeArray(variant.sizes),
             images: parseSafeArray(variant.images).map((img) =>
-<<<<<<< HEAD
               img.startsWith("http") ? img : `${iurl}/uploads/${img}`
-=======
-              img.startsWith("http") ? img : `${url}/uploads/${img}`
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
             ),
             categories: parseSafeArray(variant.categories),
             purpose: parseSafeArray(variant.purpose),

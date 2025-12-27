@@ -12,10 +12,9 @@ const Product = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
-<<<<<<< HEAD
+
   const iurl = import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "");
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   const mainSlider = useRef(null);
   const thumbSlider = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -34,7 +33,7 @@ const Product = () => {
   const handleMetalClick = (metalName) => setSelectedMetal(metalName);
   const handleGemClick = (gemstone) => setSelectedGem(gemstone);
 
-<<<<<<< HEAD
+
   const safeParseArray = (value) => {
   if (!value) return [];
 
@@ -56,8 +55,7 @@ const Product = () => {
   return [];
 };
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   // Fetch Sizes
   useEffect(() => {
     axios
@@ -96,17 +94,12 @@ const Product = () => {
           data.description = variant.description;
 
           try {
-<<<<<<< HEAD
+
             data.images = safeParseArray(variant.images || "[]");
             data.price = safeParseArray(variant.price || "[]")[0] || "";
             data.metal = safeParseArray(variant.metal || "[]")[0] || "";
             data.sizes = safeParseArray(variant.sizes || "[]");
-=======
-            data.images = JSON.parse(variant.images || "[]");
-            data.price = JSON.parse(variant.price || "[]")[0] || "";
-            data.metal = JSON.parse(variant.metal || "[]")[0] || "";
-            data.sizes = JSON.parse(variant.sizes || "[]");
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
             data.gemstone = variant.gemstone || "";
           } catch (err) {
             console.error("Error parsing product variant fields:", err);
@@ -170,11 +163,8 @@ const Product = () => {
               {images?.map((img, index) => (
                 <div key={index} className="flex justify-center">
                   <img
-<<<<<<< HEAD
                     src={`${iurl}/uploads/${img}`}
-=======
-                    src={`${API_BASE_URL}/uploads/${img}`}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                     alt={`Product ${index}`}
                     className="w-full h-[500px] object-cover rounded-lg "
                   />
@@ -188,11 +178,8 @@ const Product = () => {
                 {images?.map((img, index) => (
                   <div key={index} className="px-1 flex justify-center">
                     <img
-<<<<<<< HEAD
                       src={`${iurl}/uploads/${img}`}
-=======
-                      src={`${API_BASE_URL}/uploads/${img}`}
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                       alt={`Thumb ${index}`}
                       onClick={() => mainSlider.current.slickGoTo(index)}
                       className={`w-28 h-28 object-cover cursor-pointer border-2 rounded transition-all duration-200 ${

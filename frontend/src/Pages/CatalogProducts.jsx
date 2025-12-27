@@ -40,7 +40,7 @@ const CatalogProducts = () => {
     selectedPurposes: [],
     selectedFestivals: [],
   });
-<<<<<<< HEAD
+
 const safeParseArray = (value) => {
   if (!value) return [];
   if (Array.isArray(value)) return value;
@@ -55,8 +55,7 @@ const safeParseArray = (value) => {
   }
   return [];
 };
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -73,7 +72,7 @@ const safeParseArray = (value) => {
           (product.ProductVariants || []).map(variant => {
             return {
               ...variant,
-<<<<<<< HEAD
+
               categories: safeParseArray(variant.categories || '[]'),
               subCategories: safeParseArray(variant.subCategories || '[]'),
               themes: safeParseArray(variant.themes || '[]'),
@@ -81,15 +80,7 @@ const safeParseArray = (value) => {
               festivals: safeParseArray(variant.festivals || '[]'),
               sizes: safeParseArray(variant.sizes || '[]'),
               metal: safeParseArray(variant.metal || '[]'),
-=======
-              categories: JSON.parse(variant.categories || '[]'),
-              subCategories: JSON.parse(variant.subCategories || '[]'),
-              themes: JSON.parse(variant.themes || '[]'),
-              purposes: JSON.parse(variant.purposes || '[]'),
-              festivals: JSON.parse(variant.festivals || '[]'),
-              sizes: JSON.parse(variant.sizes || '[]'),
-              metal: JSON.parse(variant.metal || '[]'),
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
               price: parsePrice(variant.price),
               productId: product.id,
             };

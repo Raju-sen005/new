@@ -71,17 +71,11 @@ function Slidebar1() {
                         <GiResize className="w-5 h-5" />
                         <span>Sizes</span>
                     </NavLink>
-<<<<<<< HEAD
                     {/* <NavLink to="/offer" className={navLinkClass}> */}
                         {/* <FaPercentage className="w-5 h-5" /> */}
                         {/* <span>Offer</span> */}
                     {/* </NavLink> */}
-=======
-                    <NavLink to="/offer" className={navLinkClass}>
-                        <FaPercentage className="w-5 h-5" />
-                        <span>Offer</span>
-                    </NavLink>
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                 </nav>
             </div>
         </div>

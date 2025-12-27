@@ -4,10 +4,9 @@ import axios from "axios";
 import { API_BASE_URL } from '../lib'
 
 const CategoryDetailPage = () => {
-<<<<<<< HEAD
+
   const iurl = import.meta.env.VITE_BACKEND_URL.replace(/\/api$/, "");
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   const location = useLocation();
   const navigate = useNavigate();
   const category = location.state; // category object
@@ -15,7 +14,6 @@ const CategoryDetailPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-<<<<<<< HEAD
   const safeParseArray = (value) => {
     if (!value) return [];
 
@@ -34,17 +32,14 @@ const CategoryDetailPage = () => {
     return [];
   };
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   useEffect(() => {
     if (category) {
       axios
         .get(
-<<<<<<< HEAD
+
           `${API_BASE_URL}/products/category/${category.category.toLowerCase()}`
-=======
-          `${API_BASE_URL}/api/products/category/${category.category.toLowerCase()}`
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
         )
         .then((res) => {
           setProducts(res.data);
@@ -76,11 +71,9 @@ const CategoryDetailPage = () => {
         {products.map((product) => {
           const variant = product.ProductVariants?.[0] || {};
           const productImage = variant.images
-<<<<<<< HEAD
+
             ? `${iurl}/uploads/${safeParseArray(variant.images)[0]}`
-=======
-            ? `${API_BASE_URL}/uploads/${JSON.parse(variant.images)[0]}`
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
             : "/placeholder.jpg";
 
           const productPrice = variant.price || product.price || 0;
@@ -96,20 +89,16 @@ const CategoryDetailPage = () => {
                   src={productImage}
                   alt={variant.title || product.category}
                   className="w-full max-w-md h-auto rounded-lg object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
-<<<<<<< HEAD
+
                   onClick={() =>
-=======
-                 onClick={() =>
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                     navigate(`/product/${variant.productId}/${variant.id}`)
                   }
                 />
               </div>
-<<<<<<< HEAD
 
-=======
-              
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
+
               {/* Right - Product Info */}
               <div className="w-full md:w-1/2 flex flex-col px-6 md:px-10 py-8 bg-[#F6F4F0]">
                 <div className="mb-6">
@@ -118,11 +107,9 @@ const CategoryDetailPage = () => {
                   </h1>
                   <p className="text-2xl md:text-3xl font-bold text-[#5B3E38]">
                     {variant.categories
-<<<<<<< HEAD
+
                       ? safeParseArray(variant.categories).join(", ")
-=======
-                      ? JSON.parse(variant.categories).join(", ")
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
                       : product.category}
                   </p>
                 </div>

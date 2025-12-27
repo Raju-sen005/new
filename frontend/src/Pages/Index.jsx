@@ -72,7 +72,7 @@ const Index = () => {
   }, []);
   const { addToCart } = useCart(); // Use the cart context
 
-<<<<<<< HEAD
+
 
   const safeParseArray = (value) => {
   if (!value) return [];
@@ -92,8 +92,7 @@ const Index = () => {
   return [];
 };
 
-=======
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
   //
   useEffect(() => {
     const fetchData = async () => {
@@ -109,7 +108,7 @@ const Index = () => {
         const flattenedVariants = result.flatMap((product) =>
           product.ProductVariants.map((variant) => ({
             ...variant,
-<<<<<<< HEAD
+
             categories: safeParseArray(variant.categories || "[]"),
             subCategories: safeParseArray(variant.subCategories || "[]"),
             themes: safeParseArray(variant.themes || "[]"),
@@ -118,16 +117,7 @@ const Index = () => {
             sizes: safeParseArray(variant.sizes || "[]"),
             metal: safeParseArray(variant.metal || "[]"),
             price: safeParseArray(variant.price || "[]"),
-=======
-            categories: JSON.parse(variant.categories || "[]"),
-            subCategories: JSON.parse(variant.subCategories || "[]"),
-            themes: JSON.parse(variant.themes || "[]"),
-            purposes: JSON.parse(variant.purposes || "[]"),
-            festivals: JSON.parse(variant.festivals || "[]"),
-            sizes: JSON.parse(variant.sizes || "[]"),
-            metal: JSON.parse(variant.metal || "[]"),
-            price: JSON.parse(variant.price || "[]"),
->>>>>>> d0bd68f264cf6afdede23774441409dc299d02df
+
             productId: product.id,
           }))
         );
