@@ -18,6 +18,8 @@ const ThemeProducts = () => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_BASE_URL = process.env.VITE_BACKEND_URL;
+  
 
   useEffect(() => {
     (async () => {
@@ -114,7 +116,7 @@ const normalized = allVariants.map((v) => {
               {/* Product Image */}
               {item.image ? (
                 <img
-                  src={`${API_BASE_URL}/uploads/${item.image}`}
+                  src={`${API_BASE_URL.replace(/\/api$/, "")}/uploads/${item.image}`}
                   alt={item.title}
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform"
                 />
